@@ -14,7 +14,7 @@ public class ejercicio {
 
   public static void main(String[] args) {
     Scanner myScanner = new Scanner(System.in);
-    System.out.println("Hola, Por favor ingresa tu nombre: ");
+    System.out.println("Holaaaa, Por favor ingresa tu nombre: ");
     String nombre = myScanner.nextLine();
     System.out.println("Por favor ingresa tu edad: ");
     int edad = myScanner.nextInt();
