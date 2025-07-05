@@ -37,15 +37,20 @@ public class factorial {
     } while (numero < 0);
     System.out.println("El número ingresado es: " + numero);
 
-    // Do While para hacer el calculo
+    // Ciclo para calcular el factorial
     int resultadoFactorial = 1;
     do {
       for (int i = 1; i <= numero; i++) {
         resultadoFactorial *= i;
       }
       System.out.println("El factorial de " + numero + " es: " + resultadoFactorial);
-
     } while (resultadoFactorial == numero);
     sc.close();
+
+    /*
+     * Nota: Creo que este Segundo Do while es algo redundante, creo que se puede
+     * dejar solo el for
+     * Pero se puede dejar asi o de la otra.
+     */
   }
 }
