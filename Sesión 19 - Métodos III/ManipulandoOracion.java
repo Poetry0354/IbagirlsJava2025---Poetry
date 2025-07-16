@@ -1,5 +1,10 @@
+import java.util.Arrays;
+
 public class ManipulandoOracion {
     public static java.util.Scanner sc = new java.util.Scanner(System.in);
+    public static String[] palabra;
+    public static String[] ordenar;
+
     public static void main(String[] args) {
        menu();
     }
@@ -7,7 +12,10 @@ public class ManipulandoOracion {
     public static void menu() {
         String opcionOracion="";
         String oracion="";
+        int contar;
+        int palabra1;
         boolean salir= false;
+        
         try {
             System.out.println("-------------Menu-------------");
             do { 
@@ -32,17 +40,24 @@ public class ManipulandoOracion {
                         System.out.println("su oracion es: " + oracion);
                     }
                     case 2 -> {
-
-                        System.out.println("El resultado de la resta es: "  );
+                        contar=CantidadCaracteres(oracion);
+                        System.out.println(" la cantidad total de caracteres en la oración es : " + contar);
                     }
                     case 3 -> {
-
-                        System.out.println("El resultado de la multiplicación es: "  );
+                        palabra=Palabras(oracion);
+                        palabra1=CantidadPalabras(palabra);
+                        System.out.println("la cantidad de palabras en la oración es : " + palabra1 );
                     }
                     case 4 -> {
-
+                        palabra = Palabras(oracion);
+                        String[] ordenadas = ordenarAlfa(palabra);
+                        System.out.println("Palabras ordenadas alfabéticamente:");
+                        for (String p : ordenadas) {
+                            System.out.println(p);
+                        }
                     }
                     case 5 -> {
+
                         System.out.println("El resultado del módulo es: "  );
                     }
                     case 6 -> {
@@ -82,4 +97,25 @@ public class ManipulandoOracion {
         }
         
     }
+
+    public static int CantidadCaracteres(String oracion) {
+        return oracion.length();
+    }
+
+
+    public static String[] Palabras(String oracion) {
+       String[] palabras = oracion.trim().split("\\s+");
+       return palabras;
+    }
+
+    public static int CantidadPalabras(String[] palabras) {
+       return palabras.length;
+    }
+    public static String[] ordenarAlfa(String[] palabra) {
+       Arrays.sort(palabra);
+        return palabra;
+    }
+
+    
+
 }

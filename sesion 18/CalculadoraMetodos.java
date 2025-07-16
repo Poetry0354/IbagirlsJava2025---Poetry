@@ -1,80 +1,89 @@
-/*Vuelve a realizar el ejercicio de la calculadora, pero esta vez crea un método llamado "menu()" que no reciba ningún parámetro y se encargue de generar la lógica de mostrar el menú de opciones y producir el bucle para seguir mostrando el menú hasta seleccionar la opción de "salir". Solicita dos números al usuario y realiza la operación matemática seleccionada, teniendo en cuenta las validaciones necesarias como la división por cero. */
+/**
+ * Vuelve a realizar el ejercicio de la calculadora, pero esta vez crea un
+ * método llamado "menu()" que no reciba ningún parámetro y se encargue de
+ * generar la lógica de mostrar el menú de opciones y producir el bucle para
+ * seguir mostrando el menú hasta seleccionar la opción de "salir". Solicita dos
+ * números al usuario y realiza la operación matemática seleccionada, teniendo
+ * en cuenta las validaciones necesarias como la división por cero.
+ *
+ * Aquí te recordamos cuál era la actividad:
+ * 1. Solicita al usuario que ingrese dos números y almacena estos valores en
+ * variables previamente declaradas.
+ * 2. Declara una variable para almacenar el resultado de la operación.
+ * 3. Permite al usuario elegir qué operación quiere realizar.
+ * 4. Muestra el resultado de la operación en la consola.
+ * 
+ */
+public class calculadoraMetodos {
 
-import java.util.Scanner;
+  public static void main(String[] args) {
+    menu();
+    calculo(0, 0, 0); // Llamada inicial para evitar error de compilación
 
-public class CalculadoraMetodos{
+  }
 
-    public static Scanner sc = new Scanner(System.in);
-    public static double num1 = 0;
-    public static double num2 = 0;
-    public static int opcion = 0;
-    public static double resultado = 0;
-    public static boolean salir = false;
-    
-    public static void main(String[] args) {
-        menu();
+  public static void menu() {
+    java.util.Scanner scanner = new java.util.Scanner(System.in);
+    boolean condition = true;
+    while (condition) {
+      try {
+        System.out.println("Calculadora:");
+        System.out.println("1. Sumar");
+        System.out.println("2. Restar");
+        System.out.println("3. Multiplicar");
+        System.out.println("4. Dividir");
+        System.out.println("5. Salir");
+        System.out.print("Elige una opción: ");
+        int opcion = scanner.nextInt();
+
+        if (opcion == 5) {
+          condition = false;
+          System.out.println("¡Hasta luego!");
+          break;
+        }
+
+        System.out.print("Introduce el primer número: ");
+        double num1 = scanner.nextDouble();
+        System.out.print("Introduce el segundo número: ");
+        double num2 = scanner.nextDouble();
+
+        calculo(opcion, num1, num2);
+
+      } catch (Exception e) {
+        System.out.println("Entrada no válida. Intenta de nuevo.");
+        scanner.nextLine(); // Limpiar el buffer
+      }
+    }
+    scanner.close();
+  }
+
+  public static void calculo(int opcion, double num1, double num2) {
+    double resultado = 0;
+    switch (opcion) {
+      case 1:
+        resultado = num1 + num2;
+        System.out.println("Resultado de la suma: " + resultado);
+        break;
+      case 2:
+        resultado = num1 - num2;
+        System.out.println("Resultado de la resta: " + resultado);
+        break;
+      case 3:
+        resultado = num1 * num2;
+        System.out.println("Resultado de la multiplicación: " + resultado);
+        break;
+      case 4:
+        if (num2 == 0) {
+          System.out.println("Error: División por cero no permitida.");
+        } else {
+          resultado = num1 / num2;
+          System.out.println("Resultado de la división: " + resultado);
+        }
+        break;
+      default:
+        System.out.println("Opción no válida. Por favor, elige una opción del 1 al 5.");
     }
 
-    public static void menu(){
-        try {
-            System.out.println("-------------CALCULADORA-------------");
-            System.out.println("Ingresa el primer número: ");
-            num1 = sc.nextInt();
-            sc.nextLine();
-            System.out.println("Ingresa el segundo número: ");
-            num2 = sc.nextInt();
-            sc.nextLine();
-            do {
-                System.out.println("""
-                    
-                        Ingresa la operación que deseas realizar:
-                        1. Suma
-                        2. Resta
-                        3. Multiplicación
-                        4. División
-                        5. Módulo
-                        6. Salir
-                        """);
-                opcion = sc.nextInt();
-                sc.nextLine();
-                switch (opcion){
-                    case 1 -> {
-                        resultado = num1+num2;
-                        System.out.println("El resultado de la suma es: "+resultado);
-                    }
-                    case 2 -> {
-                       resultado = num1-num2;
-                       System.out.println("El resultado de la resta es: "+resultado); 
-                    }
-                    case 3 -> {
-                        resultado = num1 * num2;
-                        System.out.println("El resultado de la multiplicación es: " + resultado);
-                    }
-                    case 4 -> {
-                        if (num2==0) {
-                            System.out.println("No se puede dividir por cero."); 
-                        }else{
-                            resultado = num1 / num2;
-                            System.out.println("El resultado de la división es: " + resultado);
-                        }
-                    }
-                    case 5 -> {
-                        resultado = num1 % num2;
-                        System.out.println("El resultado del módulo es: " + resultado);
-                    }
-                    case 6 -> {
-                        System.out.println("Gracias por utilizar la calculadora.");
-                        salir = true;
-                    }
-                }
-            } while (salir == false);
-            
-        } catch (ArithmeticException e) {
-            System.out.println("No se puede dividir por cero: "+e.getMessage());
-            // TODO: handle exception
-        } catch (Exception e){
-            System.out.println("Hubo un error: "+e.getMessage());
-        }         
-        
-    }
+  }
+
 }
