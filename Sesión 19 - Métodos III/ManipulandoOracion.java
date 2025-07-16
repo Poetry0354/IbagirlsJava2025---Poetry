@@ -1,5 +1,7 @@
 import java.util.Arrays;
 
+import java.util.Arrays;
+
 public class ManipulandoOracion {
     public static java.util.Scanner sc = new java.util.Scanner(System.in);
     public static String[] palabra;
@@ -63,28 +65,28 @@ public class ManipulandoOracion {
                     case 6 -> {
                         System.out.println("Gracias por utilizar la calculadora.");
 
-                    }
-                    case 7 -> {
-                        System.out.println("Gracias por utilizar la calculadora.");
+          }
+          case 7 -> {
+            System.out.println("Gracias por utilizar la calculadora.");
 
-                    }
-                    case 8 -> {
-                        System.out.println("Gracias por utilizar la calculadora.");
+          }
+          case 8 -> {
+            System.out.println("Gracias por utilizar la calculadora.");
 
-                    }
-                    case 9 -> {
-                        System.out.println("Gracias por utilizar la calculadora.");
-                        salir = true;
-                    }
-                }
-            } while (salir == false);
-
-        } catch (ArithmeticException e) {
-            System.out.println("No se puede dividir por cero: " + e.getMessage());
-            // TODO: handle exception
-        } catch (Exception e) {
-            System.out.println("Hubo un error: " + e.getMessage());
+          }
+          case 9 -> {
+            System.out.println("Gracias por usarnos");
+            salir = true;
+          }
         }
+      } while (salir == false);
+
+    } catch (ArithmeticException e) {
+      System.out.println("No se puede dividir por cero: " + e.getMessage());
+      // TODO: handle exception
+    } catch (Exception e) {
+      System.out.println("Hubo un error: " + e.getMessage());
+    }
 
     }
     
