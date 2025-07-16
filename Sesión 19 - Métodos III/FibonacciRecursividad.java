@@ -22,7 +22,10 @@ public class FibonacciRecursividad {
       return 0;
     } else if (n == 1) {      
       return 1;
-    } else {      
+    } else {    
+      System.out.print("Valor de N: "+ n);  
+      System.out.print(" N - 1: "+(n-1));
+      System.out.println(" N - 2: "+(n-2));
       return fibonacciRecursivo(n - 1) + fibonacciRecursivo(n - 2);
     }
     // Si n es mayor que 1, sumamos los dos números anteriores de la serie de
